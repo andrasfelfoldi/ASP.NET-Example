@@ -8,6 +8,8 @@ namespace ASP.NET_Example.Models
 {
     public class Movie
     {
+        public int Id { get; set; }
+
         [Required, MinLength(1), MaxLength(50)]
         public String Title { get; set; }
         public String ReleaseYear { get; set; }
