@@ -5,17 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ASP.NET_Example.Models;
+using ASP.NET_Example.Services;
 
 namespace ASP.NET_Example.Controllers
 {
     public class HomeController : Controller
     {
+        private IMovieDbService _movieDb;
+
+        public HomeController(IMovieDbService movieDb)
+        {
+            _movieDb = movieDb;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult AddMovie()
         {
             ViewData["Message"] = "Your application description page.";
 

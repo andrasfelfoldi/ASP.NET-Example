@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Example.Services
 {
-    interface IMovieDbService
+    public interface IMovieDbService
     {
         IEnumerable<Movie> GetMovies();
         Movie GetMovie(int id);
