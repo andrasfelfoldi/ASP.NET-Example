@@ -23,11 +23,18 @@ namespace ASP.NET_Example.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult AddMovie()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddMovie(Movie newMovie)
+        {
+            _movieDb.AddMovie(newMovie);
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Contact()

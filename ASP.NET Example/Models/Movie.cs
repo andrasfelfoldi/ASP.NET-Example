@@ -12,7 +12,8 @@ namespace ASP.NET_Example.Models
 
         [Required, MinLength(1), MaxLength(50)]
         public String Title { get; set; }
-        public String ReleaseYear { get; set; }
+        [Display(Name = "Release Year")]
+        public int ReleaseYear { get; set; }
         public Rating Rating { get; set; }
     }
 }
