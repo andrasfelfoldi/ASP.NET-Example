@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ASP.NET_Example.Models;
 using ASP.NET_Example.Services;
+using ASP.NET_Example.ViewModels;
 
 namespace ASP.NET_Example.Controllers
 {
@@ -20,7 +21,11 @@ namespace ASP.NET_Example.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = new IndexModel();
+            model.Movies= _movieDb.GetMovies();
+
+
+            return View(model);
         }
 
         [HttpGet]
