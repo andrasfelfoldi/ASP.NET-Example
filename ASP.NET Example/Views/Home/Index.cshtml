@@ -4,16 +4,30 @@
 
 @model IndexModel;
 
-@foreach (var movie in Model.Movies)
+<div>
+    TODO: Fix Exception after delete
+</div>
+@if (!Model.Movies.Any())
 {
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">@movie.Title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">@movie.ReleaseYear</h6>
-            <p class="card-text">@movie.Rating</p>
-            <a href="#" class="card-link">Edit</a>
-            <a href="#" class="card-link">Delete</a>
-        </div>
+    <span style="margin: 5px auto; text-align:center; display:block;">
+        There are no movies in the database currently. <a asp-area="" asp-controller="Home" asp-action="AddMovie" class="nav-link" style="display:inline; padding:0;">Click here</a> to add one!
+    </span>
+}
+else
+{
+    <div style="display:flex; flex-wrap:wrap;">
+        @foreach (var movie in Model.Movies)
+        {
+            <div class="card" style="width: 18rem; margin: 5px; flex-basis: 32%;">
+                <div class="card-body">
+                    <h5 class="card-title">@movie.Title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@movie.ReleaseYear</h6>
+                    <p class="card-text">@movie.Rating</p>
+                    <a href="#" class="card-link">Edit</a>
+                    <a asp-controller="Home" asp-action="DeleteMovie" asp-route-id="@movie.Id" class="nav-link" style="display:inline; padding:0;">Delete</a>
+                </div>
+            </div>
+        }
     </div>
 }
 

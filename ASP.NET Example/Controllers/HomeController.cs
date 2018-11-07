@@ -23,8 +23,7 @@ namespace ASP.NET_Example.Controllers
         {
             var model = new IndexModel();
             model.Movies= _movieDb.GetMovies();
-
-
+            Console.Out.WriteLine(model.Movies == null);
             return View(model);
         }
 
@@ -40,6 +39,13 @@ namespace ASP.NET_Example.Controllers
         {
             _movieDb.AddMovie(newMovie);
             return RedirectToAction(nameof(Index));
+        }
+        
+        public IActionResult DeleteMovie(int id)
+        {
+            _movieDb.DeleteMovie(id);
+
+            return View(nameof(Index));
         }
 
         public IActionResult Contact()

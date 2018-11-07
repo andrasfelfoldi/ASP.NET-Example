@@ -23,9 +23,12 @@ namespace ASP.NET_Example.Services
             return movie;
         }
 
-        public Movie DeleteMovie(int id)
+        public void DeleteMovie(int id)
         {
-            throw new NotImplementedException();
+            Movie movieToDelete = new Movie() { Id = id };
+            _context.Movies.Attach(movieToDelete);
+            _context.Movies.Remove(movieToDelete);
+            _context.SaveChanges();
         }
 
         public Movie EditMovie(Movie movie)

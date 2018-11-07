@@ -12,6 +12,6 @@ namespace ASP.NET_Example.Services
         Movie GetMovie(int id);
         Movie AddMovie(Movie movie);
         Movie EditMovie(Movie movie);
-        Movie DeleteMovie(int id);
+        void DeleteMovie(int id);
     }
 }
