@@ -33,7 +33,11 @@ namespace ASP.NET_Example.Services
 
         public Movie EditMovie(Movie movie)
         {
-            throw new NotImplementedException();
+            _context.Movies.Attach(movie);
+            _context.Movies.Update(movie);
+            _context.SaveChanges();
+
+            return movie;
         }
 
         public Movie GetMovie(int id)

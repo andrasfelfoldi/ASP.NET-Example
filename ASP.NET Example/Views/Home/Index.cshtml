@@ -4,9 +4,6 @@
 
 @model IndexModel;
 
-<div>
-    TODO: Fix Exception after delete
-</div>
 @if (!Model.Movies.Any())
 {
     <span style="margin: 5px auto; text-align:center; display:block;">
@@ -15,15 +12,15 @@
 }
 else
 {
-    <div style="display:flex; flex-wrap:wrap;">
+    <div style="display:flex; flex-wrap:wrap; margin-bottom: 40px">
         @foreach (var movie in Model.Movies)
         {
-            <div class="card" style="width: 18rem; margin: 5px; flex-basis: 32%;">
+            <div class="card" style="min-width: 18rem; margin: 5px; flex-basis: 32%;">
                 <div class="card-body">
                     <h5 class="card-title">@movie.Title</h5>
                     <h6 class="card-subtitle mb-2 text-muted">@movie.ReleaseYear</h6>
                     <p class="card-text">@movie.Rating</p>
-                    <a href="#" class="card-link">Edit</a>
+                    <a asp-controller="Home" asp-action="EditMovie" asp-route-id="@movie.Id" class="nav-link" style="display:inline; padding:0;">Edit</a>
                     <a asp-controller="Home" asp-action="DeleteMovie" asp-route-id="@movie.Id" class="nav-link" style="display:inline; padding:0;">Delete</a>
                 </div>
             </div>

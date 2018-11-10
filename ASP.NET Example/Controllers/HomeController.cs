@@ -40,12 +40,28 @@ namespace ASP.NET_Example.Controllers
             _movieDb.AddMovie(newMovie);
             return RedirectToAction(nameof(Index));
         }
-        
+
+        [HttpGet]
+        public IActionResult EditMovie(int id)
+        {
+            Movie movie=_movieDb.GetMovie(id);
+
+            return View(movie);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditMovie(Movie editedMovie)
+        {
+            _movieDb.EditMovie(editedMovie);
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult DeleteMovie(int id)
         {
             _movieDb.DeleteMovie(id);
 
-            return View(nameof(Index));
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Contact()
